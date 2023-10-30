@@ -1,4 +1,8 @@
-def main(board):
+board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+turnNumber = 1
+
+def checkWin():
+    
     board_string = [list(map(str, x)) for x in board]
     rows = [''.join(x) for x in board_string]
     columns = [''.join(x) for x in zip(*board_string)]
@@ -12,3 +16,35 @@ def main(board):
         return 0
     else:
         return -1
+    
+def setUp():
+    displayBoard()
+    while(checkWin() == -1):
+        takeTurn()
+        displayBoard()
+    print()
+    
+
+def displayBoard():
+    for x in board:
+        #line = map(str, ["O" if i == 1 else if "X" for i in x])
+        #print(' | '.join(line))
+        print('_________')
+def takeTurn():
+    global turnNumber
+    while True:
+        print("Choose a space, ie (1,2). Top right is (1,1)")
+        command = [x - 1 for x in map(int, input().split(","))]
+        space = board[command[0]][command[1]]
+        if space == 0:
+            print(turnNumber)
+            board[command[0]][command[1]] = 2 if (turnNumber % 2 == 0) else 1
+            turnNumber += 1
+            break
+
+        else:
+            print("Invalid space, try again")
+    #displayBoard()
+         
+
+setUp()
