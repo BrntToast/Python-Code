@@ -25,7 +25,7 @@ def checkWin():
     else:
         return -1
 
-
+# Sets up the the starting state
 def setUp():
     # Display the current game board
     displayBoard()
@@ -38,12 +38,14 @@ def setUp():
     # Print the result of the game
     print(checkWin())
     
-
+# Display the board
 def displayBoard():
     # Print each row of the game board with the pipe character as a seperator
     for x in board:
         print(' | '.join(x))
         print('_________')
+
+# Take a turn based on user input
 def takeTurn():
     global turnNumber
     while True:
